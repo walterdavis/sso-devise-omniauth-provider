@@ -23,6 +23,9 @@ OauthProviderDemo::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'success.neuronetics.com' }
+  
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
@@ -46,3 +49,8 @@ OauthProviderDemo::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+ActionMailer::Base.smtp_settings = {
+  :address => 'mail.neuronetics.com',
+  :port => 25,
+  :domain => 'neuronetics.com'#,
+}

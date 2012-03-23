@@ -3,8 +3,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
      # Building the resource with information that MAY BE available from omniauth!
-     build_resource(:first_name => session[:omniauth] && session[:omniauth]['user_info'] && session[:omniauth]['user_info']['first_name'], 
-         :last_name => session[:omniauth] && session[:omniauth]['user_info'] && session[:omniauth]['user_info']['last_name'],
+     build_resource(:first_name => session[:omniauth] && session[:omniauth]['info'] && session[:omniauth]['info']['first_name'], 
+         :last_name => session[:omniauth] && session[:omniauth]['info'] && session[:omniauth]['info']['last_name'],
          :email => session[:omniauth_email] )
      render_with_scope :new
   end

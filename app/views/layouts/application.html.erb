@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OauthProviderDemo</title>
-  <%= stylesheet_link_tag :application %>
-  <%= javascript_include_tag :application %>
-  <%= csrf_meta_tag %>
+	<title>Practice Success Program</title>
+	<%= stylesheet_link_tag :application %>
+	<%= javascript_include_tag :application %>
+	<%= csrf_meta_tag %>
+	<%= yield(:head) %>
 </head>
 <body>
+	<div id="PageDiv">
+		<aside id="user_bar">
+			<p>
+				<span id="user_nav">
+					<%- if user_signed_in? -%>
+					Signed in as <%= current_user.full_name %>. Not you?
+					<%= link_to "Sign Out", destroy_user_session_path %>
+					<%- else -%>
+					<%= link_to "Sign In", new_user_session_path %>
+					<%- end -%>
+				</span>
+				<span id="site_brand">Practice Success Program</span>
+				<a href="http://neuronetics.com" title="Neuronetics.com - A Privately Held Medical Device Company and Developers of the NeuroStar TMS Therapy System®"><img src="<%= asset_path('home_logo_top.gif') %>" width="201" height="22" alt="Neuronetics Logo"/></a>
+			</p>
+		</aside>
+		<div id="main" class="inside">
+			<div id="header">
+				<%= content_tag :h1, yield(:title) if (show_title? )%>
+				<% flash.each do |name, msg| %>
+				<%= content_tag :div, msg, :id => "flash_#{name}" %>
+				<% end %>
+			</div>
+			<%= yield %>
+		</div>
+		<footer>
+			<%- unless current_page?(:root) -%>
+			<p><a href="http://neuronetics.com" title="Neuronetics.com - A Privately Held Medical Device Company and Developers of the NeuroStar TMS Therapy System®"><img src="<%= asset_path('inside_logo_footer.gif') %>" width="203" height="24" alt="Neuronetics Logo"/></a></p>
+			<%- end -%>
+			<p>Copyright ©2011<%= (' - ' + Date.today.year.to_s).html_safe if (Date.today.year > 2011 ) %> Neuronetics, Inc. All rights reserved.</p>
+			<p>Application designed and developed by <a href="http://walterdavisstudio.com">Walter Davis Studio</a>.</p>
+		</footer>
 
-<%= yield %>
-
+	</div>
 </body>
 </html>

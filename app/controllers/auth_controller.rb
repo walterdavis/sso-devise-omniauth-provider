@@ -3,7 +3,6 @@ class AuthController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:access_token]
 
   def welcome
-    render :text => "Hiya! #{current_user.first_name} #{current_user.last_name}"
   end
 
   def authorize
@@ -36,11 +35,9 @@ class AuthController < ApplicationController
 
   def user
     hash = {
-      :provider => 'josh_id',
+      :provider => 'neuro',
       :id => current_user.id.to_s,
-      :info => {
-         :email => current_user.email, # change if required
-      }
+      :email => current_user.email, # change if required
     }
 
     render :json => hash.to_json

@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
 
   before_validation :initialize_fields, :on => :create
 
-  devise :database_authenticatable, :registerable, :token_authenticatable,
-         :recoverable, :timeoutable, :trackable, :validatable, :rememberable
+  devise :invitable, :database_authenticatable, :token_authenticatable,
+         :recoverable, :trackable, :validatable, :rememberable
 
   self.token_authentication_key = "oauth_token"
 
@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 
   def apply_omniauth(omniauth)
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  end
+  
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def self.find_for_token_authentication(conditions)
