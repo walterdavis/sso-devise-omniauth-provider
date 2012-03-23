@@ -13,7 +13,7 @@ gem 'therubyracer'
 gem 'jquery-rails'
 
 # gems for omniauth and devise
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 gem 'omniauth'
-gem 'devise_invitable'
+gem 'devise',           '~> 2.0.0'
+gem 'devise_invitable', '~> 1.0.0'
 gem 'nifty-generators', :group => :development
