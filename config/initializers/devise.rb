@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "Customer Support <customer_support@neuronetics.com>"
-
+  config.case_insensitive_keys = [:email]
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
 
@@ -102,6 +102,7 @@ Devise.setup do |config|
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
+  config.reset_password_within = 2.hours
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use

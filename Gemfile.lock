@@ -1,12 +1,3 @@
-GIT
-  remote: git://github.com/plataformatec/devise.git
-  revision: b3034292f21b401fe873f720775c8ee41b9638bf
-  specs:
-    devise (1.5.2)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.3)
-      warden (~> 1.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -48,9 +39,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.3)
-    devise_invitable (0.6.1)
-      devise (>= 1.4.6, < 1.6)
-      rails (~> 3.1.0)
+    devise (2.0.4)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.0.3)
+      railties (~> 3.1)
+      warden (~> 1.1.1)
+    devise_invitable (1.0.0)
+      devise (~> 2.0.0)
+      rails (~> 3.0)
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
@@ -73,7 +69,7 @@ GEM
     omniauth (1.0.1)
       hashie (~> 1.2)
       rack
-    orm_adapter (0.0.5)
+    orm_adapter (0.0.6)
     polyglot (0.3.3)
     rack (1.3.5)
     rack-cache (1.1)
@@ -124,7 +120,7 @@ GEM
     uglifier (1.1.0)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    warden (1.1.0)
+    warden (1.1.1)
       rack (>= 1.0)
 
 PLATFORMS
@@ -132,8 +128,8 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.1)
-  devise!
-  devise_invitable
+  devise (~> 2.0.0)
+  devise_invitable (~> 1.0.0)
   jquery-rails
   mysql
   nifty-generators
