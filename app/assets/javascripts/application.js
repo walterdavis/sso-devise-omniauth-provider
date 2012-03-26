@@ -6,4 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.cookie
+//= require hide_migration
 //= require_tree .

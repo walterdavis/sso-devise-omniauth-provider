@@ -1,18 +1,34 @@
 <%= title "Sign in" %>
-
 <div class="form-wrap">
+<% if cookies['hide_migration'].blank? %>
+<div class="flash">
+	<span class="right hide_migration" style="cursor:pointer">Hide This</span>
+	<h3>Note:</h3>
+	<p>This site is switching to a single-sign-on system, which will require a one-time reset of your password. Use <a href="http://success.neuronetics.com/users/password/new" title="Practice Success Program">this form</a> to enter your e-mail address, press the button, and you will receive an email with a link to reset your password.</p>
+	<p>You may use the same password as you are accustomed to, or you may change to a new password. Your new password must be at least six characters in length, but there are no other special requirements.</p>
+	<p>Thanks!</p>
+</div>
+<% end %>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+<p>
+<%= f.label :email %><br />
+<%= f.email_field :email %>
+</p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+<p>
+	<%= f.label :password %><br />
+	<%= f.password_field :password %>
+</p>
 
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
+<% if devise_mapping.rememberable? -%>
+<p>
+	<%= f.check_box :remember_me %> <%= f.label :remember_me %>
+</p>
+<% end -%>
 
-  <p><%= f.submit "Sign in" %></p>
+<p>
+	<%= f.submit "Sign in" %>
+</p>
 <% end %>
 </div>
 <%= render :partial => "devise/shared/links" %>
